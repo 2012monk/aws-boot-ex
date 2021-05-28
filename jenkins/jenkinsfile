@@ -48,8 +48,7 @@ pipeline {
         }
 
         stage('build gradle') {
-            steps {
-                sh """
+            steps '''
                 {
                 $(./gradlew build)
                 }||
@@ -58,7 +57,7 @@ pipeline {
                 }
 
                 ls -al ./build
-                """
+                '''
             }
             post {
                 success {
@@ -84,10 +83,18 @@ pipeline {
 
             post {
                 success {
+                    slackSend color: "good", message: "Docker Deploy Success ${PROJECT}"
+                    mail to: '2012monk@gmail.com',
+                         subject: 'Deploy success ${PROJECT}'
+                         body: 'success'
                     echo 'deploy success'
                 }
 
                 failure {
+                    slackSend color: "bad", message: "Docker deploy Failed ${PROJECT}"
+                    mail to: '2012monk@gmail.com',
+                         subject: 'Deploy failed ${PROJECT}'
+                         body: 'failed'
                     echo 'deploy failed'
                 }
             }
