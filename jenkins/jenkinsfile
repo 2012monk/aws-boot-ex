@@ -85,7 +85,7 @@ pipeline {
                                   channel:'#deploy-alarm'
 
                         emailext to: '2012monk@gmail.com',
-                                 body: "${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}
+                                 body: "${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG},
                                         check ${BUILD_URL}",
                                  subject: "deploy success ${JOB_NAME}:${BUILD_NUMBER}"
                 }
