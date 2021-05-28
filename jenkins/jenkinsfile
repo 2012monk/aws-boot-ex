@@ -48,7 +48,8 @@ pipeline {
         }
 
         stage('build gradle') {
-            steps '''
+            steps {
+                sh '''
                 {
                 $(./gradlew build)
                 }||
