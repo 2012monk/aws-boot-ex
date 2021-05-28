@@ -46,23 +46,27 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            agent any
-            steps {
-                echo 'gradle build start...'
-                sh './gradlew build'
-            }
-
-            post {
-                success {
-                    echo 'gradle build success'
+        stage('build in docker') {
+            agent {
+                docker {
+                    image 'adoptopenjdk/openjdk11:alpine-jre'
                 }
 
-                failure {
-                    echo 'gradle build failed'
+                steps {
+                    sh './gradlew build'
                 }
+                post {
+                                success {
+                                    echo 'gradle build success'
+                                }
+
+                                failure {
+                                    echo 'gradle build failed'
+                                }
+                            }
             }
         }
+
 
         stage('Dockerizing') {
             agent any
