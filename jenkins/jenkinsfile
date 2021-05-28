@@ -7,6 +7,7 @@ pipeline {
         AWS_DEFAULT_REGION='ap-northeast-2'
         AWS_OUTPUT = 'json'
         HOME='.'
+        PROJECT='boot-server'
     }
 
     stages {
@@ -46,8 +47,6 @@ pipeline {
                 sh 'export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
                 sh 'AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
                 sh 'export AWS_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY}'
-                sh 'AWS_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY}'
-                sh 'export AWS_DEFAULT_REGION=ap-northeast-2'
                 sh 'export AWS_OUTPUT=json'
                 echo '$AWS_SECRET_ACCESS_KEY'
             }
@@ -75,13 +74,10 @@ pipeline {
             steps {
                 echo 'dockerizing start...'
                 sh 'pwd'
-                sh 'export'
-                echo '${AWS_SECRET_ACCESS_KEY}'
-                sh 'pwd'
-                sh 'ls -al ./build'
-                sh 'ls -al ./build/libs/'
+                sh 'docker-compose down'
+                sh 'docker rm ${PROJECT}'
                 sh 'docker-compose up --build -d'
-                echo 'docker ps '
+                sh 'docker ps '
             }
 
             post {
