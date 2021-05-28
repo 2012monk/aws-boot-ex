@@ -39,9 +39,8 @@ pipeline {
                 }
             }
         }
-    }
 
-        stage ('Initialize') {
+        stage('Initialize') {
             steps {
                 sh 'cat ./gradle/wrapper/gradle-wrapper.properties'
             }
@@ -89,6 +88,6 @@ pipeline {
                     echo 'deploy failed'
                 }
             }
-
         }
-    }   
+    }
+} 
