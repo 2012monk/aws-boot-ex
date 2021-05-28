@@ -1,0 +1,6 @@
+aws:
+  paramstore:
+    enabled: true
+    prefix: /data-base
+    name: monk
+    profile-separator: _
