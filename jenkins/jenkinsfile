@@ -85,8 +85,8 @@ pipeline {
                              subject: "Deploy success ${PROJECT}",
                              body: 'success'
 
-                        emailext body: "deploy success ${PROJECT}"
-                                 subject: 'deploy alarm'
+                        emailext body: "deploy success ${PROJECT}",
+                                 subject: 'deploy alarm',
                                  to: '2012monk@gmail.com'
                 }
 
