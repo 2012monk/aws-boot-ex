@@ -13,7 +13,7 @@ services:
       context: ../
 
       args:
-        app: /build/libs/*.jar
+        app: ./build/libs/*.jar
 
       dockerfile: ./docker/Dockerfile
 

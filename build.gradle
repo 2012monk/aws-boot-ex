@@ -12,11 +12,6 @@ java{
 
 }
 
-bootJar{
-    archivesBaseName = 'monk'
-    archiveFileName = 'boot-aws.jar'
-    archiveVersion = "0.0.1"
-}
 
 configurations {
     compileOnly {
@@ -45,6 +40,12 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
+bootJar{
+    archivesBaseName = 'monk'
+    archiveFileName = 'boot-aws.jar'
+    archiveVersion = "0.0.1"
+}
+
 
 dependencyManagement {
     imports {

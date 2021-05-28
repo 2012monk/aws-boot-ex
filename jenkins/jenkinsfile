@@ -54,6 +54,8 @@ pipeline {
         stage('build gradle') {
             steps {
                 sh './gradlew build --exclude-task test'
+                sh 'cd build'
+                sh 'ls -al'
             }
             post {
                 success {
