@@ -10,12 +10,12 @@ services:
       - TZ=Asia/Seoul
 
     build:
-      context: ../
+      context: .
 
       args:
         app: ./build/libs/*.jar
 
-      dockerfile: ./docker/Dockerfile
+      dockerfile: Dockerfile
 
     ports:
       - "47788:8080"
