@@ -74,14 +74,12 @@ pipeline {
         stage('Dockerizing') {
             agent any
             steps {
-                dir('./docker') {
-                    echo 'dockerizing start...'
-                    sh 'pwd'
-                    sh 'export'
-                    echo '${AWS_SECRET_ACCESS_KEY}'
-                    sh 'docker-compose up --build -d'
-                    echo 'docker ps '
-                }
+                echo 'dockerizing start...'
+                sh 'pwd'
+                sh 'export'
+                echo '${AWS_SECRET_ACCESS_KEY}'
+                sh 'docker-compose up --build -d'
+                echo 'docker ps '
             }
 
             post {
