@@ -71,7 +71,7 @@ pipeline {
             agent any
             steps {
                 echo 'dockerizing start...'
-                sg 'pwd'
+                sh 'pwd'
                 sh 'cat ./docker/docker-compose.yml'
                 sh './docker/docker-compose up --build -d'
                 echo 'docker ps '
