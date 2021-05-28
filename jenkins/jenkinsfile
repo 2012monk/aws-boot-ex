@@ -42,7 +42,7 @@ pipeline {
 
         stage ('Initialize') {
             steps {
-                sh 'cat /gradle/wrapper/gradle-wrapper.properties'
+                sh 'cat ./gradle/wrapper/gradle-wrapper.properties'
             }
         }
 
