@@ -72,7 +72,6 @@ pipeline {
 
 
         stage('Dockerizing') {
-            agent any
             steps {
                 echo 'dockerizing start...'
                 sh 'pwd'
