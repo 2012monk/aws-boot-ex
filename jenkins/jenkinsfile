@@ -39,6 +39,7 @@ pipeline {
                 }
             }
         }
+    }
 
         stage ('Initialize') {
             steps {
@@ -50,21 +51,19 @@ pipeline {
             agent {
                 docker {
                     image 'adoptopenjdk/openjdk11:alpine-jre'
-                    }
+                }
+            }
+            steps {
+                sh './gradlew build'
+            }
+            post {
+                success {
+                    echo 'gradle build success'
                 }
 
-                steps {
-                    sh './gradlew build'
+                failure {
+                    echo 'gradle build failed'
                 }
-                post {
-                        success {
-                            echo 'gradle build success'
-                        }
-
-                        failure {
-                            echo 'gradle build failed'
-                        }
-                    }
             }
         }
 
@@ -92,9 +91,4 @@ pipeline {
             }
 
         }
-
-
-
-
-    }
-}
+    }   
