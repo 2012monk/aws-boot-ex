@@ -6,10 +6,8 @@ plugins {
 apply plugin: 'java'
 group = 'com.boot.awsbootex'
 version = '0.0.1-SNAPSHOT'
-java {
-    sourceCompatibility = '11'
-    targetCompatibility = '11'
-}
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 bootJar{
     archivesBaseName = 'monk'
