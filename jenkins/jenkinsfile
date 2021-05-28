@@ -50,9 +50,9 @@ pipeline {
             }
         }
 
-        stage('build in docker') {
+        stage('build gradle') {
             steps {
-                sh './gradlew build'
+                sh './gradlew build --exclude-task test'
             }
             post {
                 success {
