@@ -84,19 +84,23 @@ pipeline {
 
             post {
                 success {
+                steps{
                     echo 'deploy success'
                     slackSend color: "good", message: "Docker Deploy Success ${PROJECT}",
                     mail to: '2012monk@gmail.com',
                          subject: 'Deploy success ${PROJECT}'
                          body: 'success'
+                    }
                 }
 
                 failure {
-                    echo 'deploy failed'
-                    slackSend color: "bad", message: "Docker deploy Failed ${PROJECT}",
-                    mail to: '2012monk@gmail.com',
-                         subject: 'Deploy failed ${PROJECT}'
-                         body: 'failed'
+                    steps{
+                        echo 'deploy failed'
+                        slackSend color: "bad", message: "Docker deploy Failed ${PROJECT}",
+                        mail to: '2012monk@gmail.com',
+                             subject: 'Deploy failed ${PROJECT}'
+                             body: 'failed'
+                    }
                 }
             }
         }
