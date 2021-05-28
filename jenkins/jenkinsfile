@@ -75,6 +75,7 @@ pipeline {
                 dir('./docker') {
                     echo 'dockerizing start...'
                     sh 'pwd'
+                    echo 'export'
                     echo '$AWS_SECRET_ACCESS_KEY'
                     sh 'cat ./docker-compose.yml'
                     sh 'docker-compose up --build -d'
