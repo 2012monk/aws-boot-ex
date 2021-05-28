@@ -70,13 +70,11 @@ pipeline {
         stage('Dockerizing') {
             agent any
             steps {
-                dir('./docker'){
-                    echo 'dockerizing start...'
-                    echo 'pwd'
-                    echo 'cat docker-compose.yml'
-                    sh 'docker-compose up --build -d'
-                    echo 'docker ps '
-                }
+                echo 'dockerizing start...'
+                sg 'pwd'
+                sh 'cat ./docker/docker-compose.yml'
+                sh './docker/docker-compose up --build -d'
+                echo 'docker ps '
             }
 
             post {
