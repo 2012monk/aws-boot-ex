@@ -44,7 +44,9 @@ pipeline {
             steps {
                 sh 'cat ./gradle/wrapper/gradle-wrapper.properties'
                 sh 'export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
+                sh 'AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
                 sh 'export AWS_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY}'
+                sh 'AWS_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY}'
                 sh 'export AWS_DEFAULT_REGION=ap-northeast-2'
                 sh 'export AWS_OUTPUT=json'
                 echo '$AWS_SECRET_ACCESS_KEY'
@@ -55,7 +57,7 @@ pipeline {
             steps {
                 sh './gradlew build --exclude-task test'
                 sh 'cd build'
-                sh 'ls -al'
+                sh 'ls -al ./build'
             }
             post {
                 success {
@@ -75,8 +77,8 @@ pipeline {
                 dir('./docker') {
                     echo 'dockerizing start...'
                     sh 'pwd'
-                    echo 'export'
-                    echo '$AWS_SECRET_ACCESS_KEY'
+                    sh 'export'
+                    echo '${AWS_SECRET_ACCESS_KEY}'
                     sh 'cat ./docker-compose.yml'
                     sh 'docker-compose up --build -d'
                     echo 'docker ps '
