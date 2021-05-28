@@ -82,8 +82,12 @@ pipeline {
                         echo 'deploy success'
                         slackSend color: "good", message: "Docker Deploy Success ${PROJECT}"
                         mail to: '2012monk@gmail.com',
-                             subject: 'Deploy success ${PROJECT}',
+                             subject: "Deploy success ${PROJECT}",
                              body: 'success'
+
+                        emailext body: "deploy success ${PROJECT}"
+                                 subject: 'deploy alarm'
+                                 to: '2012monk@gmail.com'
                 }
 
                 failure {
