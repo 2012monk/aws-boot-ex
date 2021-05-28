@@ -50,15 +50,10 @@ pipeline {
         stage('build gradle') {
             steps {
                 sh  '''
-                {
-                $(./gradlew build)
-                }||
-                {
-                $(./gradlew build --exclude-task test)
-                }
-
-                ls -al ./build
+                ./gradlew build --exclude-task test
                 '''
+
+                sh 'ls -al ./build'
             }
             post {
                 success {
