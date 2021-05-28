@@ -45,8 +45,8 @@ pipeline {
                 sh 'cat ./gradle/wrapper/gradle-wrapper.properties'
                 sh 'export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
                 sh 'export AWS_ACCESS_KEY_ID=${AWS_SECRET_ACCESS_KEY}'
-                sh 'AWS_DEFAULT_REGION=ap-northeast-2'
-                sh 'AWS_OUTPUT = json'
+                sh 'export AWS_DEFAULT_REGION=ap-northeast-2'
+                sh 'export AWS_OUTPUT = json'
             }
         }
 
