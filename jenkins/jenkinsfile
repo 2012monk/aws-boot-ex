@@ -79,7 +79,6 @@ pipeline {
                     sh 'pwd'
                     sh 'export'
                     echo '${AWS_SECRET_ACCESS_KEY}'
-                    sh 'cat ./docker-compose.yml'
                     sh 'docker-compose up --build -d'
                     echo 'docker ps '
                 }
