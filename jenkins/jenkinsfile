@@ -46,13 +46,6 @@ pipeline {
             }
         }
 
-        stage('Prepare build') {
-            steps {
-                echo 'gen gradlew'
-                sh 'gradle wrapper'
-            }
-        }
-
         stage('Build') {
             agent any
             steps {
