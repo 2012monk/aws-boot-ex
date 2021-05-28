@@ -84,7 +84,7 @@ pipeline {
                                   message: "Docker Deploy Success ${PROJECT} ${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}",
                                   channel:'#deploy-alarm'
 
-                        emailext to: '2012monk@gmail.com'
+                        emailext to: '2012monk@gmail.com',
                                  body: "${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}"
                 }
 
