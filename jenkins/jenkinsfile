@@ -80,22 +80,18 @@ pipeline {
             post {
                 success {
                         echo 'deploy success'
-                        slackSend color: "good", message: "Docker Deploy Success ${PROJECT}"
-                        mail to: '2012monk@gmail.com',
-                             subject: "Deploy success ${PROJECT}",
-                             body: 'success'
+                        slackSend color: "good", message: "Docker Deploy Success ${PROJECT} ${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}" channel:'#deploy-alarm'
 
-                        emailext body: "deploy success ${PROJECT}",
-                                 subject: 'deploy alarm',
-                                 to: '2012monk@gmail.com'
+                        emailext to: '2012monk@gmail.com'
+                                 body: "${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}"
                 }
 
                 failure {
                         echo 'deploy failed'
-                        slackSend color: "bad", message: "Docker deploy Failed ${PROJECT}"
+                        slackSend color: "bad", message: "Docker deploy Failed ${PROJECT} ${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}" channel:'#deploy-alarm'
                         mail to: '2012monk@gmail.com',
-                             subject: 'Deploy failed ${PROJECT}',
-                             body: 'failed'
+                             subject: "Deploy failed ${PROJECT}:${BUILD_NUMBER}",
+                             body: "${JOB_NAME}:${BUILD_NUMBER}-${BUILD_ID}-${BUILD_TAG}"
                 }
             }
         }
